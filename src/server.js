@@ -19,7 +19,7 @@ app.use(cors({
     credentials: true
 }));
 
-app.options("*", cors());
+
 
 
 //configuration line that allows us to navigate the folder dir
