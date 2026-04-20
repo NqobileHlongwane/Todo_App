@@ -37,8 +37,6 @@ app.use('/todo', authMiddleware, todoRoutes);
 
 
 
-app.options("*", cors());
-
 //A middleware to access the publiuc directory specifically
 //express static tells the server to locate the folder one step up because of the 2 dots
 app.use(express.static(path.join(__dirname, '../public')))
