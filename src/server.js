@@ -2,6 +2,7 @@ import express from 'express';
 //import our auth routes to this server
 import authRoutes from './routes/authRoutes.js'
 import todoRoutes from './routes/todoRoutes.js'
+import cors from 'cors';
 
 //import variable path and dirname(from javascript module)
 //to access paths and directories, simply tells our server.js to locate our html files as a response 
@@ -26,6 +27,8 @@ app.use('/auth', authRoutes);
 
 //telling the server to pass through the middleware before accessing todo routes
 app.use('/todo', authMiddleware, todoRoutes);
+
+app.use(cors());
 
 
 //A middleware to access the publiuc directory specifically
