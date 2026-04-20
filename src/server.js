@@ -13,6 +13,13 @@ import authMiddleware from './middleware/authMiddleware.js';
 const app = express()
 const PORT = process.env.PORT;
 
+app.use(cors({
+    origin: "https://task-web-mngr.netlify.app",
+    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+    credentials: true
+}));
+
+app.options("*", cors());
 
 
 //configuration line that allows us to navigate the folder dir
@@ -28,11 +35,7 @@ app.use('/auth', authRoutes);
 //telling the server to pass through the middleware before accessing todo routes
 app.use('/todo', authMiddleware, todoRoutes);
 
-app.use(cors({
-    origin: "https://task-web-mngr.netlify.app",
-    methods: ["GET", "POST", "PUT", "DELETE"],
-    credentials: true
-}));
+
 
 app.options("*", cors());
 
