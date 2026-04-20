@@ -28,7 +28,11 @@ app.use('/auth', authRoutes);
 //telling the server to pass through the middleware before accessing todo routes
 app.use('/todo', authMiddleware, todoRoutes);
 
-app.use(cors());
+app.use(cors({
+    origin: "https://task-web-mngr.netlify.app",
+    methods: ["GET", "POST", "PUT", "DELETE"],
+    credentials: true
+}));
 
 
 //A middleware to access the publiuc directory specifically
